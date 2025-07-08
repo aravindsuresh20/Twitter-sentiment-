@@ -1,29 +1,65 @@
-🐦 twitter.py — Twitter Sentiment Analysis Dashboard
-Purpose:
-Analyzes sentiment in tweets from a CSV file using TextBlob and applies conditional formatting in Excel for easy visualization.
+Twitter Sentiment Analysis
+This project provides a Python script to perform sentiment analysis on a Twitter dataset stored in a CSV file. It uses the TextBlob library to analyze the sentiment of tweet texts and then saves the results, including sentiment classification, sentiment percentage, and sentiment score, to an Excel file. Positive and Negative sentiments are highlighted with different background colors in the Excel output.
 
-🔧 Features & Workflow
-📥 Load Dataset
+Features
+Loads tweet data from a CSV file.
 
-Reads data from:
-D:/twitter new sentiment/twitter_dataset.csv
-🧹 Preprocessing
+Performs sentiment analysis (Positive, Negative, Neutral) on the 'Text' column.
 
-Strips whitespace from column names.
-Uses the Text column for sentiment analysis.
-💬 Sentiment Analysis
+Calculates sentiment percentage and a numerical sentiment score.
 
-Uses TextBlob to compute:
-Sentiment: 'Positive', 'Negative', or 'Neutral'
-Sentiment_Percentage: magnitude of polarity × 100
-Sentiment_Score: raw polarity score
-📊 Output
+Saves the processed data to an Excel file.
 
-Saves results to:
-D:/twitter new sentiment/twitter_dataset_colored.xlsx
-🎨 Excel Formatting
+Applies conditional formatting in the Excel file:
 
-Applies color coding to the Sentiment column:
-✅ Green for Positive
-⚠️ Yellow for Negative
-Neutral remains uncolored
+Green background for 'Positive' sentiments.
+
+Yellow background for 'Negative' sentiments.
+
+Requirements
+Ensure you have the following Python libraries installed:
+
+pandas
+
+textblob
+
+openpyxl
+
+You can install them using pip:
+
+Bash
+
+pip install pandas textblob openpyxl
+You might also need to download the TextBlob data after installing it:
+
+Bash
+
+python -m textblob.download_corpora
+Installation
+Save the twitter.py file:
+Ensure the twitter.py script is saved in your desired working directory.
+
+Set up a virtual environment (optional but recommended):
+
+Bash
+
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+Usage
+Prepare your dataset:
+Ensure your Twitter data is in a CSV file named twitter_dataset.csv (or update the input_file variable in twitter.py to your file path). The CSV file must contain a column named Text with the tweet content.
+
+Run the script:
+
+Bash
+
+python twitter.py
+Check the output:
+A new Excel file named twitter_dataset_colored.xlsx will be generated in the same directory as your input CSV file (or the path specified in output_file in twitter.py). This file will contain the original data along with the new 'Sentiment', 'Sentiment_Percentage', and 'Sentiment_Score' columns, with sentiment cells colored accordingly.
+
+Project Structure
+/your-project-directory
+│── twitter.py           # Main Python script for sentiment analysis
+│── twitter_dataset.csv  # Input Twitter dataset (example)
+│── twitter_dataset_colored.xlsx # Output Excel file
+│── README.md            # Project documentation
